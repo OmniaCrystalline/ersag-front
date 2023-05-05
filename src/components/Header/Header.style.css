@@ -1,0 +1,12 @@
+.nav{
+    display: flex;
+    gap: 10px;
+}
+
+.navlink{
+    text-decoration: none;
+}
+
+.navlink.active{
+    text-decoration: underline;
+}

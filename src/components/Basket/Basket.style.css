@@ -1,0 +1,65 @@
+.basket {
+    display: flex;
+    gap: 10px;
+    flex-direction: column;
+    margin-left: auto;
+    margin-right: auto;
+    width: 90%;
+}
+
+.quantity_field{
+    display: flex;
+    width: 100%;
+    outline: none;
+    border: none;
+    background:whitesmoke;
+    height: 100%;
+    padding: 0;
+}
+
+.input_holder{
+    padding: 0;
+}
+
+
+.table>span,
+.table>button {
+    border: 1px solid black;
+    padding: 5px 10px;
+}
+
+.table~input {
+    width: 50px;
+}
+
+.table {
+    width: 75%;
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr 1fr 1fr 1fr;
+}
+
+ul {
+    padding: 0;
+    margin: 0;
+    list-style: none;
+    gap: 10px;
+    display: flex;
+    flex-direction: column;
+}
+
+
+
+.basket_btn {
+    margin: 10px;
+    width: 100px;
+}
+
+
+.user_data {
+    display: flex;
+    gap: 10px;
+}
+
+.user_data * {
+    padding: 5px 10px;
+}
