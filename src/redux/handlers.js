@@ -11,7 +11,7 @@ export const setGoods = (state, action) => {
 
 export const handleResolveOrder = (state, action) => {
   state.isLoading = false;
-  state.orders.push(state.basket);
+  state.orders.push({order: [...state.basket], date: new Date()});
   state.basket = [];
   alert('delivered')
 };

@@ -38,7 +38,10 @@ export const productsSlice = createSlice({
           ))
         : state.basket.push(action.payload);
     },
-    setOrder(state, action) {},
+
+    reset(state, action) {
+      state.orders = [];
+    },
 
     changeQuantity(state, action) {
       console.log("changeQuantity");
@@ -58,12 +61,7 @@ export const productsSlice = createSlice({
   },
 });
 
-export const {
-  likesSwitcher,
-  basketSwitcher,
-  setBasketGoods,
-  changeQuantity,
-  setOrder,
-} = productsSlice.actions;
+export const { likesSwitcher, basketSwitcher, setBasketGoods, changeQuantity, reset } =
+  productsSlice.actions;
 
 export const productsReducer = productsSlice.reducer;

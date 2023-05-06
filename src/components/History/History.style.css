@@ -1,0 +1,17 @@
+.historty_container{
+    width: 90%;
+    margin-right: auto;
+    margin-left: auto;
+    padding-top: 60px;
+    padding-bottom: 60px;
+}
+
+.list_item_history{
+    display: grid;
+    gap: 10px;
+}
+
+.history_orders_list{
+    display: grid;
+    gap: 10px;
+}

@@ -6,7 +6,7 @@ import { useDispatch, useSelector } from "react-redux";
 import { getGoods } from "../../redux/operations";
 import { products, isLoading, likes, basket } from "../../redux/selectors";
 import { Pending } from "../Pending/Pending";
-//import { URL } from "../../redux/operations";
+import { URL } from "../../redux/operations";
 import { likesSwitcher, basketSwitcher } from "../../redux/slice";
 
 export const Products = () => {
@@ -39,12 +39,13 @@ const ProductItem = ({ item }) => {
   const likeList = useSelector(likes);
   const basketList = useSelector(basket);
   const { _id,
-    //img,
+    img,
     title, price, volume, quantity } = item;
+  const image = `${URL}/images/${img}`
 
   return (
-    <li>
-      {/*<img src={`${URL}/images/${img}`} alt={title} />*/}
+    <li className='product_item'>
+      <img src={image} alt={title} />
       <p>title: {title}</p>
       <p>price: {price}</p>
       <p>volume: {volume}</p>
@@ -52,10 +53,10 @@ const ProductItem = ({ item }) => {
       <button
         type='button'
         className={
-          basketList.findIndex(e=>e._id ===_id) !== -1 ? "active_btn" : ""
+          basketList.findIndex((e) => e._id === _id) !== -1 ? "active_btn" : ""
         }
         onClick={() => {
-          dispatch(basketSwitcher(item))
+          dispatch(basketSwitcher(item));
         }}>
         toBasket
       </button>
