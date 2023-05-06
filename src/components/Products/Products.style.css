@@ -1,3 +1,15 @@
 .active_btn{
     background: green;
 }
+
+.products_container{
+    width: 90%;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+.products_list{
+    display: grid;
+    gap: 10px;
+    grid-template-columns: 1fr 1fr 1fr;
+}

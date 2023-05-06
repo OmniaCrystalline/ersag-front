@@ -1,6 +1,7 @@
 .nav{
     display: flex;
     gap: 10px;
+    padding: 20px;
 }
 
 .navlink{
@@ -10,3 +11,4 @@
 .navlink.active{
     text-decoration: underline;
 }
+

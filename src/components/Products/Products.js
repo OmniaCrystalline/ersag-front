@@ -19,18 +19,18 @@ export const Products = () => {
   }, [dispatch]);
 
   return (
-    <>
+    <div className="products_container">
       {" "}
-      products
+      products {" "}
       {pending && <Pending />}
       {list.length > 0 && (
-        <ul>
+        <ul className="products_list">
           {list.map((item) => (
             <ProductItem item={item} key={item._id} />
           ))}
         </ul>
       )}
-    </>
+    </div>
   );
 };
 
