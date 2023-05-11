@@ -6,7 +6,7 @@ import { useDispatch, useSelector } from "react-redux";
 import { getGoods } from "../../redux/operations";
 import { products, isLoading, likes, basket } from "../../redux/selectors";
 import { Pending } from "../Pending/Pending";
-import { URL } from "../../redux/operations";
+//import { URL } from "../../redux/operations";
 import { likesSwitcher, basketSwitcher } from "../../redux/slice";
 
 export const Products = () => {
@@ -41,7 +41,7 @@ const ProductItem = ({ item }) => {
   const { _id,
     img,
     title, price, volume, quantity } = item;
-  const image = `${URL}/images/${img}`
+  const image = {img}
 
   return (
     <li className='product_item'>

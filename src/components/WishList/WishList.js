@@ -21,10 +21,11 @@ export const WishList = () => {
 
 const WishItem = ({ elem }) => {
   const dispatch = useDispatch()
-  const {title, price, usage, describe, _id} = elem
+  const {title, price, usage, describe, _id, img} = elem
   return (
     <li key={elem._id}>
       <p>title: {title}</p>
+      <img src={img} alt={title} />
       <p>price: {price}</p>
       <p>usage: {usage}</p>
       <p>description: {describe}</p>
