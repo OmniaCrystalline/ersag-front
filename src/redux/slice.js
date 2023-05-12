@@ -15,7 +15,10 @@ const initialState = {
   isRejected: false,
   likes: [],
   basket: [],
-  orders: [],
+  orders: [{
+    date: null,
+    order: []}
+  ],
 };
 
 export const productsSlice = createSlice({
@@ -40,11 +43,10 @@ export const productsSlice = createSlice({
     },
 
     reset(state, action) {
-      state.orders = [];
+      state.orders = initialState.orders;
     },
 
     changeQuantity(state, action) {
-      console.log("changeQuantity");
       if (action.payload[1] === "") return;
       const index = state.basket.findIndex((e) => e._id === action.payload[0]);
       if (index === -1) return;

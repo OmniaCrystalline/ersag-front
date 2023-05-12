@@ -1,3 +1,16 @@
+import './Pending.style.css'
+
 export const Pending = () => {
-    return (<>Pending...</>)
+    return (
+      <div class='lds-roller'>
+        <div></div>
+        <div></div>
+        <div></div>
+        <div></div>
+        <div></div>
+        <div></div>
+        <div></div>
+        <div></div>
+      </div>
+    );
 }

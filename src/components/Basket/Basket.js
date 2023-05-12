@@ -18,16 +18,16 @@ export const Basket = () => {
 
   return (
     <div className='basket'>
-      basket
       <div className='table'>
         <span>title</span>
+        <span>img</span>
         <span>price grn</span>
-        <span>volume ml</span>
+        <span>volume</span>
         <span>quantity</span>
         <span>sum</span>
         <span>remove</span>
       </div>
-      <ul>
+      <ul className="basket_list">
         {basketed.map((e) => (
           <BasketItem key={e._id + "basket"} elem={e} />
         ))}
@@ -48,7 +48,7 @@ export const Basket = () => {
 
 const BasketItem = ({ elem }) => {
   const dispatch = useDispatch();
-  const { price, title, _id, volume, quantity } = elem;
+  const { price, title, _id, volume, quantity, img } = elem;
 
   const handleChange = (e) => {
     if (e.target.value === "") return;
@@ -59,15 +59,16 @@ const BasketItem = ({ elem }) => {
     <li>
       <div className='table'>
         <span>{title}</span>
+        <span className="img_container_basket">
+          <img className="basket_img" src={img} alt={title}/>
+        </span>
         <span>{price}grn</span>
         <span>{volume}ml</span>
         <span className="input_holder">
           <input className="quantity_field" type='number' placeholder={quantity} onChange={handleChange} />
         </span>
-        <span data-sum>sum:{price * quantity} </span>
-        <button type='button' onClick={() => dispatch(basketSwitcher(elem))}>
-          remove
-        </button>
+        <span>{price * quantity} grn</span>
+        <button className="basket_remove_btn" type='button' onClick={() => dispatch(basketSwitcher(elem))}>x</button>
       </div>
     </li>
   );
@@ -113,7 +114,7 @@ const UserData = () => {
           type='text'
           name='phone'
           ref={phone}></input>
-        <button type='submit'>send</button>
+        <button className="btn_order" type='submit'>send</button>
       </form>
     </>
   );

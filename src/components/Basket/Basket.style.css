@@ -9,47 +9,69 @@
     padding-bottom: 60px;
 }
 
-.quantity_field{
-    display: flex;
-    width: 100%;
-    outline: none;
-    border: none;
-    background:whitesmoke;
-    height: 100%;
+.input_holder {
     padding: 0;
 }
 
-.table>span,
-.table>button {
-    border: 1px solid black;
-    padding: 5px 10px;
+.quantity_field {
+    display: flex;
+    width: 50%;
+    outline: none;
+    border: none;
+    border: 1px solid lightgrey;
+    padding: 5px;
 }
 
-.table~input {
-    width: 50px;
+.basket_img {
+    width: 100%;
+}
+
+.table>span {
+    border-bottom: 1px solid lightgray;
+    display: flex;
+    align-items: flex-end;
+    justify-content: center;
+    padding-bottom: 5px;
+
 }
 
 .table {
     display: grid;
-    grid-template-columns: 1fr 1fr 1fr 1fr 1fr 1fr;
+    grid-template-columns: 1fr;
+    gap: 10px;
+    box-shadow: 1px;
+}
+
+@media screen and (min-width: 512px) {
+    .table {
+        grid-template-columns: 3fr 1fr 2fr 1fr 2fr 2fr 1fr;
+    }
+}
+
+.basket_list{
+    display: grid;
+    gap: 10px;
+}
+
+.basket_remove_btn {
+    border: none;
+    background: transparent;
+    margin-top: 5px;
+    color: lightgray;
+    border-bottom: 1px solid lightgray;
 }
 
 ul {
     padding: 0;
     margin: 0;
     list-style: none;
-    gap: 10px;
-    display: flex;
-    flex-direction: column;
 }
-
-
 
 .basket_btn {
     margin: 10px;
     width: 100px;
+    border: none;
 }
-
 
 .user_data {
     display: flex;
@@ -60,3 +82,17 @@ ul {
 .user_data * {
     padding: 5px 10px;
 }
+
+.img_container_basket{
+    min-height: 384px;
+    padding-bottom: 5px;
+}
+
+@media screen and (min-width: 512px){
+    .img_container_basket {
+            background: rgb(250, 250, 250);
+            min-height: 70px;
+        }
+    
+}
+

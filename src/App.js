@@ -1,5 +1,5 @@
 /** @format */
-
+import "./App.css";
 import { Route, Routes, Navigate } from "react-router-dom";
 import { Layout } from "./pages/Layout.js";
 import { ProductsPage } from "./pages/ProductsPage.js";
