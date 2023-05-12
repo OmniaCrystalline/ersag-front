@@ -1,3 +1,7 @@
+.pending_container{
+    padding-top: 50px;
+}
+
 .lds-roller {
     display: inline-block;
     position: relative;

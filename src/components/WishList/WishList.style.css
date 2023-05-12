@@ -4,11 +4,11 @@
     margin-right: auto;
     padding-top: 60px;
     padding-bottom: 60px;
+    max-width: 1024px;
 }
 
 
 .img_wishlist_container {
-    width: 150px;
     margin-left: auto;
     margin-right: auto;
     min-height: 150px;

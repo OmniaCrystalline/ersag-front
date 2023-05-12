@@ -7,12 +7,18 @@
 }
 
 .navlinks_container {
-    width: 90%;
+    width: 90vw;
     margin-left: auto;
     margin-right: auto;
     display: flex;
     gap: 10px;
     align-items: center;
+}
+
+@media screen and (min-width: 1024px) {
+    .navlinks_container {
+        max-width: 1024px;
+    }
 }
 
 .navlink {
@@ -24,9 +30,3 @@
     text-decoration: underline;
 }
 
-.header_btn{
-    background: transparent;
-    border: 1px solid white;
-    color: white;
-    margin-left: auto;
-}

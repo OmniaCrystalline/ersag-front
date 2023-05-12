@@ -15,6 +15,7 @@
 
 .products_container {
     width: 90vw;
+    max-width: 1024px;
     margin-left: auto;
     margin-right: auto;
     padding-top: 60px;
@@ -32,7 +33,6 @@
 
 .products_list {
     display: grid;
-    width: 90vw;
 }
 
 @media screen and (min-width: 512px) {
@@ -76,6 +76,12 @@
 @media screen and (min-width: 768px) {
     .img_product {
         min-height: calc(100vw / 3 * 1.33);
+    }
+}
+
+@media screen and (min-width: 1024px) {
+    .img_product {
+        min-height: calc(1024px / 4 * 1.33);
     }
 }
 

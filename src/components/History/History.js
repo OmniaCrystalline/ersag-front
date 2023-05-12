@@ -1,20 +1,27 @@
 /** @format */
 
-import { useSelector } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import "./History.style.css";
 import { history } from "../../redux/selectors";
+import { reset } from "../../redux/slice";
 
 export const History = () => {
   const list = useSelector(history);
-  console.log('list', list)
+  const dispatch = useDispatch();
   return (
     <div className='historty_container'>
-      order's history
+      <div className='heading_history'>
+        <p>order's history</p>
+        <button
+          className='history_reset_btn'
+          type='button'
+          onClick={() => dispatch(reset())}>
+          reset orders history
+        </button>
+      </div>
       <ol className='history_orders_list'>
         {list.map(({ order, date }, index) => {
           const d = new Date(date);
-          console.log('date', d)
-
           return (
             <li key={index} className='list_item_history'>
               {d.toDateString()}

@@ -4,6 +4,7 @@
     margin-left: auto;
     padding-top: 60px;
     padding-bottom: 60px;
+    max-width: 1024px;
 }
 
 .list_item_history{
@@ -13,5 +14,19 @@
 
 .history_orders_list{
     display: grid;
-    gap: 10px;
+    gap: 20px;
+}
+
+.heading_history{
+    display: flex;
+}
+
+.history_reset_btn{
+    padding: 0;
+    margin: 0;
+    background: transparent;
+    outline: none;
+    border: 1px;
+    border-bottom: 1px solid black;
+    margin-left: auto;
 }
