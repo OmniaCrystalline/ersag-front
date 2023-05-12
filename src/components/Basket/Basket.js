@@ -18,22 +18,24 @@ export const Basket = () => {
 
   return (
     <div className='basket'>
-      <div className='table'>
-        <span>title</span>
-        <span>img</span>
-        <span>price grn</span>
-        <span>volume</span>
-        <span>quantity</span>
-        <span>sum</span>
-        <span>remove</span>
-      </div>
-      <ul className="basket_list">
+      {basketed.length === 0 && <p>basket is empty, add something</p>}
+      {basketed.length > 0 && (
+        <div className='table'>
+          <span>title</span>
+          <span>img</span>
+          <span>price grn</span>
+          <span>volume</span>
+          <span>quantity</span>
+          <span>sum</span>
+          <span>remove</span>
+        </div>
+      )}
+      <ul className='basket_list'>
         {basketed.map((e) => (
           <BasketItem key={e._id + "basket"} elem={e} />
         ))}
       </ul>
       sum: {sum}grn
-      {basketed.length === 0 && <span>add someting</span>}
       <button
         className='basket_btn'
         type='button'
@@ -41,7 +43,7 @@ export const Basket = () => {
         onClick={() => setopen(!open)}>
         {open ? "close data form" : "open data form"}
       </button>
-      {open && basketed.length!==0 && <UserData />}
+      {open && basketed.length !== 0 && <UserData />}
     </div>
   );
 };

@@ -11,6 +11,7 @@ export const WishList = () => {
   const filtered = goods.filter((e) => list.includes(e._id));
   return (
     <div className='wishlist_container'>
+      {filtered.length === 0 && <p>list is empty, add someting</p>}
       <ul className='wishlist'>
         {filtered.map((e) => (
           <WishItem elem={e} key={e._id + "wishlist"} />

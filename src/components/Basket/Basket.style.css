@@ -7,6 +7,7 @@
     width: 90%;
     padding-top: 60px;
     padding-bottom: 60px;
+    max-width: 1024px;
 }
 
 .input_holder {

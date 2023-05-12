@@ -19,6 +19,7 @@ export const History = () => {
           reset orders history
         </button>
       </div>
+      {list.length === 0 && <p>you didn't make orders yet</p>}
       <ol className='history_orders_list'>
         {list.map(({ order, date }, index) => {
           const d = new Date(date);
