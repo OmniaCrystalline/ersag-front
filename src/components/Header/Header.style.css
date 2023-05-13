@@ -3,7 +3,7 @@
     height: 60px;
     position: fixed;
     width: 100%;
-    background-image: linear-gradient(to top, rgba(255,255,255,0.8), rgba(0, 0, 0, 0.8));
+    background-image: linear-gradient(to top, rgba(255, 255, 255, 0.8), rgba(0, 0, 0, 0.8));
 }
 
 .navlinks_container {
@@ -13,11 +13,13 @@
     display: flex;
     gap: 10px;
     align-items: center;
+    justify-content: space-between;
+    max-width: 1024px;
 }
 
-@media screen and (min-width: 1024px) {
+@media screen and (min-width: 768px) {
     .navlinks_container {
-        max-width: 1024px;
+        justify-content: flex-start;
     }
 }
 
@@ -29,4 +31,3 @@
 .navlink.active {
     text-decoration: underline;
 }
-

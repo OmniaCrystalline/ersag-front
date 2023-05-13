@@ -8,6 +8,7 @@ import { reset } from "../../redux/slice";
 export const History = () => {
   const list = useSelector(history);
   const dispatch = useDispatch();
+  console.log("list", list);
   return (
     <div className='historty_container'>
       <div className='heading_history'>
@@ -19,23 +20,25 @@ export const History = () => {
           reset orders history
         </button>
       </div>
-      {list.length === 0 && <p>you didn't make orders yet</p>}
+      {list.length === 1 && <p>you didn't make orders yet</p>}
       <ol className='history_orders_list'>
-        {list.map(({ order, date }, index) => {
-          const d = new Date(date);
-          return (
-            <li key={index} className='list_item_history'>
-              {d.toDateString()}
-              <ol className='history_orders_list'>
-                {order.map(({ title, quantity, price, _id }) => (
-                  <li key={_id + "history"} className='list_item_history'>
-                    {title} - {quantity} - {price}
-                  </li>
-                ))}
-              </ol>
-            </li>
-          );
-        })}
+        {list &&
+          list.length > 1 &&
+          list.map(({ order, date }, index) => {
+            const d = new Date(date);
+            return (
+              <li key={index} className='list_item_history'>
+                {date !== null && d.toDateString()}
+                <ol className='history_orders_list'>
+                  {order.map(({ title, quantity, price, _id }) => (
+                    <li key={_id + "history"} className='list_item_history'>
+                      {title} - {quantity} - {price}
+                    </li>
+                  ))}
+                </ol>
+              </li>
+            );
+          })}
       </ol>
     </div>
   );

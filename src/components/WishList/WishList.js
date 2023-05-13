@@ -2,8 +2,8 @@
 
 import { useSelector, useDispatch } from "react-redux";
 import "./WishList.style.css";
-import { likes, products } from "../../redux/selectors";
-import { likesSwitcher } from "../../redux/slice";
+import { likes, products, basket } from "../../redux/selectors";
+import { likesSwitcher, basketSwitcher } from "../../redux/slice";
 
 export const WishList = () => {
   const list = useSelector(likes);
@@ -23,6 +23,7 @@ export const WishList = () => {
 
 const WishItem = ({ elem }) => {
   const dispatch = useDispatch();
+  const basketList = useSelector(basket);
   const { title, usage, describe, _id, img } = elem;
   return (
     <li className='wishlist_item' key={elem._id}>
@@ -34,12 +35,28 @@ const WishItem = ({ elem }) => {
         <p>{describe}</p>
 
         <p>{usage}</p>
-        <button
-          type='button'
-          className='wishlist_btn'
-          onClick={() => dispatch(likesSwitcher(_id))}>
-          x
-        </button>
+        <div className='btn_wishlist_container'>
+          <button
+            type='button'
+            className={
+              basketList.findIndex((e) => e._id === _id) !== -1
+                ? "btn_product"
+                : "btn_product active_btn"
+            }
+            onClick={() => {
+              dispatch(basketSwitcher(elem));
+            }}>
+            {basketList.findIndex((e) => e._id === _id) !== -1
+              ? "removeFromBasket"
+              : "addToBasket"}
+          </button>
+          <button
+            type='button'
+            className='wishlist_btn'
+            onClick={() => dispatch(likesSwitcher(_id))}>
+            x
+          </button>
+        </div>
       </div>
     </li>
   );

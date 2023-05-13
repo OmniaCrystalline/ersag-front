@@ -1,6 +1,6 @@
 /** @format */
 
-import { useEffect } from "react";
+import { useEffect, useState } from "react";
 import "./Products.style.css";
 import { useDispatch, useSelector } from "react-redux";
 import { getGoods } from "../../redux/operations";
@@ -13,17 +13,38 @@ export const Products = () => {
   const list = useSelector(products);
   const pending = useSelector(isLoading);
   const dispatch = useDispatch();
+  const [search, setsearch] = useState("");
+  const [body, setbody] = useState(true);
+  const [clean, setclean] = useState(true);
+  const [parfume, setparfume] = useState(true);
 
   useEffect(() => {
     dispatch(getGoods());
   }, [dispatch]);
 
+  const filter = (data, val) => {
+    const { body, search, clean, parfume } = data;
+    if (body) setbody(val);
+    if (search) setsearch(val);
+    if (body) setbody(val);
+    if (clean) setclean(val);
+    if (parfume) setparfume(val);
+  };
+
+  const filtered = list
+    .filter((e) => e.title.toLowerCase().includes(search))
+    .filter((e) => (clean ? e : e.type !== "clean"))
+    .filter((e) => (!parfume ? !e.title.toLowerCase().includes("пар") : e))
+    .filter((e) => (!body ? !e.title.toLowerCase().includes("шамп") : e))
+    .filter((e) => (!body ? !e.title.toLowerCase().includes("душу") : e));
+
   return (
     <div className='products_container'>
       {pending && <Pending />}
+      <SearchBar callback={filter} />
       {list.length > 0 && (
         <ul className='products_list'>
-          {list.map((item) => (
+          {filtered.map((item) => (
             <ProductItem item={item} key={item._id} />
           ))}
         </ul>
@@ -71,5 +92,48 @@ const ProductItem = ({ item }) => {
         </button>
       </div>
     </li>
+  );
+};
+
+const SearchBar = ({ callback }) => {
+  const searchChange = (e) => {
+    const val = e.target.value;
+    const checked = e.target.checked;
+    const data = e.target.dataset;
+    if (data.search) callback(data, val);
+    else {
+      callback(data, checked);
+    }
+  };
+  return (
+    <div>
+      <form className='filter' onChange={searchChange}>
+        <input
+          type='text'
+          data-search
+          placeholder='search'
+          className='search'></input>
+        <label>
+          <input
+            type='checkbox'
+            data-parfume
+            value='parfume'
+            defaultChecked></input>
+          parfume
+        </label>
+        <label>
+          <input
+            type='checkbox'
+            data-clean
+            value='clean'
+            defaultChecked></input>
+          clean house
+        </label>
+        <label>
+          <input type='checkbox' data-body value='body' defaultChecked></input>
+          body care
+        </label>
+      </form>
+    </div>
   );
 };
