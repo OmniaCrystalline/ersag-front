@@ -1,5 +1,6 @@
 .pending_container{
-    padding-top: 50px;
+    display: flex;
+    justify-content: center;
 }
 
 .lds-roller {
@@ -21,7 +22,7 @@
     width: 7px;
     height: 7px;
     border-radius: 50%;
-    background: #fff;
+    background: lightgrey;
     margin: -4px 0 0 -4px;
 }
 
