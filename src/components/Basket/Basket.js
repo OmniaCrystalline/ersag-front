@@ -93,6 +93,7 @@ const UserData = () => {
         name: name.current.value,
         phone: phone.current.value,
         order: basketed,
+        date: new Date(),
       })
     );
     form.reset()
