@@ -6,7 +6,6 @@ import { useDispatch, useSelector } from "react-redux";
 import { getGoods } from "../../redux/operations";
 import { products, isLoading, likes, basket } from "../../redux/selectors";
 import { Pending } from "../Pending/Pending";
-//import { URL } from "../../redux/operations";
 import { likesSwitcher, basketSwitcher } from "../../redux/slice";
 
 export const Products = () => {
@@ -57,39 +56,52 @@ const ProductItem = ({ item }) => {
   const dispatch = useDispatch();
   const likeList = useSelector(likes);
   const basketList = useSelector(basket);
-  const { _id, img, title, price, volume } = item;
+  const { _id, img, title, price, volume, describe, usage } = item;
 
   return (
     <li className='product_item'>
-      <div className='img_product'>
-        <img src={img} alt={title} />
+      {/* h 450 */}
+      <div className='product-card'>
+        {/* h 300 */}
+        <div className='img_product'>
+          <img src={img} alt={title} className='product-img' />
+        </div>
+        {/* h 120 */}
+        <div className='product_card_content'>
+          <span>{title}</span>
+          <span>price: {price}</span>
+          <span>volume: {volume} ml</span>
+        </div>
+        {/* h 30 */}
+        <div className='btn_card_container'>
+          <button
+            type='button'
+            className={
+              basketList.findIndex((e) => e._id === _id) !== -1
+                ? "btn_product active_btn"
+                : "btn_product"
+            }
+            onClick={() => {
+              dispatch(basketSwitcher(item));
+            }}>
+            toBasket
+          </button>
+          <button
+            type='button'
+            className={
+              likeList.includes(_id) ? "btn_product active_btn" : "btn_product"
+            }
+            onClick={() => dispatch(likesSwitcher(_id))}>
+            toLikes
+          </button>
+        </div>
       </div>
-      <div className='product_card_content'>
-        <p>{title}</p>
-        <p>price: {price}</p>
-        <p>volume: {volume} ml</p>
-      </div>
-      <div className='btn_card_container'>
-        <button
-          type='button'
-          className={
-            basketList.findIndex((e) => e._id === _id) !== -1
-              ? "btn_product active_btn"
-              : "btn_product"
-          }
-          onClick={() => {
-            dispatch(basketSwitcher(item));
-          }}>
-          toBasket
-        </button>
-        <button
-          type='button'
-          className={
-            likeList.includes(_id) ? "btn_product active_btn" : "btn_product"
-          }
-          onClick={() => dispatch(likesSwitcher(_id))}>
-          toLikes
-        </button>
+
+      <div className='product_desc'>
+        <div className="abs">
+          <div>{describe}</div>
+          <div>{usage}</div>
+        </div>
       </div>
     </li>
   );
