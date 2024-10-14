@@ -56,7 +56,7 @@ const ProductItem = ({ item }) => {
   const dispatch = useDispatch();
   const likeList = useSelector(likes);
   const basketList = useSelector(basket);
-  const { _id, img, title, price, volume, describe, usage } = item;
+  const { _id, img, title, price, volume } = item;
 
   return (
     <li className='product_item'>
@@ -94,13 +94,6 @@ const ProductItem = ({ item }) => {
             onClick={() => dispatch(likesSwitcher(_id))}>
             toLikes
           </button>
-        </div>
-      </div>
-
-      <div className='product_desc'>
-        <div className="abs">
-          <div>{describe}</div>
-          <div>{usage}</div>
         </div>
       </div>
     </li>
