@@ -10,6 +10,7 @@ import {
 } from "./handlers";
 
 const initialState = {
+  current: {},
   goods: [],
   isLoading: false,
   isRejected: false,
@@ -25,6 +26,9 @@ export const productsSlice = createSlice({
   name: "products",
   initialState,
   reducers: {
+    getCurrent(state, action) {
+        [state.current] = state.goods.filter((e) => e._id === action.payload)
+     },
     likesSwitcher(state, action) {
       const inList = state.likes.includes(action.payload);
       inList
@@ -63,7 +67,13 @@ export const productsSlice = createSlice({
   },
 });
 
-export const { likesSwitcher, basketSwitcher, setBasketGoods, changeQuantity, reset } =
-  productsSlice.actions;
+export const {
+  likesSwitcher,
+  basketSwitcher,
+  setBasketGoods,
+  changeQuantity,
+  reset,
+  getCurrent,
+} = productsSlice.actions;
 
 export const productsReducer = productsSlice.reducer;

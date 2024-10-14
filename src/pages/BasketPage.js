@@ -1,7 +1,9 @@
 import { Basket } from "../components/Basket/Basket"
 
-export const BasketPage = () => {
+const BasketPage = () => {
     return (<>
         <Basket/>
     </>)
 }
+
+export default BasketPage

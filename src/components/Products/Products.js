@@ -7,6 +7,9 @@ import { getGoods } from "../../redux/operations";
 import { products, isLoading, likes, basket } from "../../redux/selectors";
 import { Pending } from "../Pending/Pending";
 import { likesSwitcher, basketSwitcher } from "../../redux/slice";
+import { Link } from "react-router-dom";
+
+ 
 
 export const Products = () => {
   const list = useSelector(products);
@@ -56,13 +59,14 @@ const ProductItem = ({ item }) => {
   const dispatch = useDispatch();
   const likeList = useSelector(likes);
   const basketList = useSelector(basket);
-  const { _id, img, title, price, volume, describe, usage } = item;
+  const { _id, img, title, price, volume} = item;
 
   return (
     <li className='product_item'>
       {/* h 450 */}
       <div className='product-card'>
         {/* h 300 */}
+        <Link to={`${_id}`} className="product-item-link">
         <div className='img_product'>
           <img src={img} alt={title} className='product-img' />
         </div>
@@ -72,6 +76,7 @@ const ProductItem = ({ item }) => {
           <span>price: {price}</span>
           <span>volume: {volume} ml</span>
         </div>
+        </Link>
         {/* h 30 */}
         <div className='btn_card_container'>
           <button
@@ -94,13 +99,6 @@ const ProductItem = ({ item }) => {
             onClick={() => dispatch(likesSwitcher(_id))}>
             toLikes
           </button>
-        </div>
-      </div>
-
-      <div className='product_desc'>
-        <div className="abs">
-          <div>{describe}</div>
-          <div>{usage}</div>
         </div>
       </div>
     </li>

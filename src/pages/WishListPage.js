@@ -1,7 +1,9 @@
 import { WishList } from "../components/WishList/WishList";
 
-export const WishListPage = () => {
+const WishListPage = () => {
     return (<>
         <WishList/>
     </>)
 }
+
+export default WishListPage

@@ -6,4 +6,5 @@ export const likes = (state) => state.products.likes;
 export const basket = (state) => state.products.basket;
 export const order = (state) => state.products.order;
 export const isRejected = (state) => state.products.isRegected;
-export const history = state => state.products.orders
+export const history = state => state.products.orders;
+export const current = state => state.products.current;

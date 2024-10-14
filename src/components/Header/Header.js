@@ -5,7 +5,7 @@ export const Header = () => {
     return (
       <nav className='nav'>
         <div className='navlinks_container'>
-          <NavLink className='navlink' to='/products'>
+          <NavLink className='navlink' to='/'>
             products
           </NavLink>
           <NavLink className='navlink' to='/wishlist'>

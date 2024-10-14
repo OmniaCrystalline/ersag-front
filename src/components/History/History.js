@@ -8,7 +8,6 @@ import { reset } from "../../redux/slice";
 export const History = () => {
   const list = useSelector(history);
   const dispatch = useDispatch();
-  console.log("list", list);
   return (
     <div className='historty_container'>
       <div className='heading_history'>
