@@ -3,7 +3,7 @@ import { NavLink } from "react-router-dom"
 
 export const Header = () => {
     return (
-      <nav className='nav'>
+      <nav className='nav container'>
         <div className='navlinks_container'>
           <NavLink className='navlink' to='/products'>
             products

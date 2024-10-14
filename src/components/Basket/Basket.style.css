@@ -85,14 +85,23 @@ ul {
 }
 
 .img_container_basket{
-    min-height: 384px;
+    max-height: 150px;
     padding-bottom: 5px;
 }
+
+.img_container_basket>.basket_img{
+    height: 100%;
+    width: auto;
+}
+
+
+
 
 @media screen and (min-width: 512px){
     .img_container_basket {
             background: rgb(250, 250, 250);
             min-height: 70px;
+            max-height: none;
         }
     
 }
