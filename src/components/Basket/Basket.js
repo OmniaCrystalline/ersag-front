@@ -19,20 +19,9 @@ export const Basket = () => {
   return (
     <div className='basket'>
       {basketed.length === 0 && <p>basket is empty, add something</p>}
-      {basketed.length > 0 && (
-        <div className='table'>
-          <span>title</span>
-          <span>img</span>
-          <span>price grn</span>
-          <span>volume</span>
-          <span>quantity</span>
-          <span>sum</span>
-          <span>remove</span>
-        </div>
-      )}
       <ul className='basket_list'>
-        {basketed.map((e) => (
-          <BasketItem key={e._id + "basket"} elem={e} />
+        {basketed.map((e, index) => (
+          <BasketItem key={e._id + "basket"} index={index} elem={e} />
         ))}
       </ul>
       sum: {sum}grn
@@ -48,7 +37,7 @@ export const Basket = () => {
   );
 };
 
-const BasketItem = ({ elem }) => {
+const BasketItem = ({ elem, index }) => {
   const dispatch = useDispatch();
   const { price, title, _id, volume, quantity, img } = elem;
 
@@ -60,17 +49,29 @@ const BasketItem = ({ elem }) => {
   return (
     <li>
       <div className='table'>
-        <span>{title}</span>
-        <span className="img_container_basket">
-          <img className="basket_img" src={img} alt={title}/>
+        <span>
+          {index + 1}-{title}
+        </span>
+        <span className='img_container_basket'>
+          <img className='basket_img' src={img} alt={title} />
         </span>
         <span>{price}grn</span>
         <span>{volume}ml</span>
-        <span className="input_holder">
-          <input className="quantity_field" type='number' placeholder={quantity} onChange={handleChange} />
+        <span className='input_holder'>
+          <input
+            className='quantity_field'
+            type='number'
+            placeholder={quantity}
+            onChange={handleChange}
+          />
         </span>
         <span>{price * quantity} grn</span>
-        <button className="basket_remove_btn" type='button' onClick={() => dispatch(basketSwitcher(elem))}>x</button>
+        <button
+          className='basket_remove_btn'
+          type='button'
+          onClick={() => dispatch(basketSwitcher(elem))}>
+          x
+        </button>
       </div>
     </li>
   );
@@ -85,7 +86,7 @@ const UserData = () => {
   const reject = useSelector(isRejected);
 
   const sendOrder = (e) => {
-    const form = document.querySelector('.user_data')
+    const form = document.querySelector(".user_data");
     e.preventDefault();
 
     dispatch(
@@ -96,7 +97,7 @@ const UserData = () => {
         date: new Date(),
       })
     );
-    form.reset()
+    form.reset();
   };
   return (
     <>
@@ -117,7 +118,9 @@ const UserData = () => {
           type='text'
           name='phone'
           ref={phone}></input>
-        <button className="btn_order" type='submit'>send</button>
+        <button className='btn_order' type='submit'>
+          send
+        </button>
       </form>
     </>
   );
