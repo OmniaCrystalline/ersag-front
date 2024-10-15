@@ -1,6 +1,6 @@
 /** @format */
 
-import React from "react";
+import React, { useState } from "react";
 import "./SingleProduct.style.css";
 import { useParams } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
@@ -8,18 +8,30 @@ import { basketSwitcher, getCurrent, likesSwitcher } from "../../redux/slice";
 import { current } from "../../redux/selectors";
 
 const SingleProduct = () => {
-
   const dispatch = useDispatch();
   const { id } = useParams();
   dispatch(getCurrent(id));
   const elem = useSelector(current);
-  const { describe, usage, img } = elem
+  const { describe, usage, img } = elem;
+  
+   const box= "https://res.cloudinary.com/dligd0nd6/image/upload/v1728815696/razobx1fzbcqogyzblkw.jpg"
+  
+  const [url, seturl] = useState(img);
 
   return (
-    <>
-      <div className='single-wrapper'>
-        <div className='single-img-wrapper'>
-            <img src={img} alt='' className='single-img' />
+    <div className='single-wrapper'>
+      <div className='single-img-wrapper'>
+        <img src={url} alt='1' className='single-img' />
+        <button
+          className='arrow-l'
+          onClick={() => seturl(url === img ? box : img)}>
+          prev
+        </button>
+        <button
+          className='arrow-r'
+          onClick={() => seturl(url === img ? box : img)}>
+          next
+        </button>
       </div>
       <div className='single-text-wrapper'>
         <div className='single-desc'>
@@ -43,8 +55,7 @@ const SingleProduct = () => {
           </button>
         </div>
       </div>
-      </div>
-    </>
+    </div>
   );
 };
 
