@@ -6,49 +6,71 @@
     display: grid;
     gap: 10px;
     padding-bottom: 60px;
+    max-width: 1024px;
 }
 
-.single-img-wrapper{
+.single-img-wrapper {
     display: flex;
     justify-content: center;
+    position: relative;
 }
 
-.single-text-wrapper{
+.single-text-wrapper {
     display: flex;
     flex-direction: column;
     gap: 10px;
 }
 
-.single-img{
-    width: 100%;
-    height: auto;
+.single-img {
+    width: auto;
+    height: 600px;
 }
 
-.single-btn-wrapper{
+.single-btn-wrapper {
     display: flex;
     justify-content: space-between;
     margin-top: auto;
 }
 
-.single-btn{
+.single-btn {
     background-color: inherit;
     padding: 5px;
 }
 
-.single-btn:hover, .single-btn:focus{
+.single-btn:hover,
+.single-btn:focus {
     background-color: black;
     color: white;
 }
 
-.slider-container{
-    width: 50%;
-}
-
 @media screen and (min-width: 768px) {
-    .single-wrapper{
+    .single-wrapper {
         display: flex;
     }
-   .single-text-wrapper{
-    width: 50%;
-   }
+
+    .single-text-wrapper {
+        width: 50%;
+    }
+
+    .single-img-wrapper {
+        width: 50%;
+    }
+}
+
+.arrow-l {
+    position: absolute;
+    top: 50%;
+    left: 5px;
+    background-color: rgb(6, 6, 6, 0.5);
+    padding: 5px;
+    color: white;
+}
+
+.arrow-r {
+    position: absolute;
+    top: 50%;
+    right: 5px;
+    background-color: rgb(6, 6, 6, 0.5);
+    padding: 5px;
+    color: white;
 }

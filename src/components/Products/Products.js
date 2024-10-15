@@ -8,8 +8,7 @@ import { products, isLoading, likes, basket } from "../../redux/selectors";
 import { Pending } from "../Pending/Pending";
 import { likesSwitcher, basketSwitcher } from "../../redux/slice";
 import { Link } from "react-router-dom";
-
- 
+import CarouselElem from "../Carousel/Carousel";
 
 export const Products = () => {
   const list = useSelector(products);
@@ -43,8 +42,9 @@ export const Products = () => {
   return (
     <div className='products_container'>
       {pending && <Pending />}
+      <CarouselElem />
       <SearchBar callback={filter} />
-      {list.length > 0 && (
+      {filtered.length > 0 && (
         <ul className='products_list'>
           {filtered.map((item) => (
             <ProductItem item={item} key={item._id} />
@@ -59,23 +59,23 @@ const ProductItem = ({ item }) => {
   const dispatch = useDispatch();
   const likeList = useSelector(likes);
   const basketList = useSelector(basket);
-  const { _id, img, title, price, volume} = item;
+  const { _id, img, title, price, volume } = item;
 
   return (
     <li className='product_item'>
       {/* h 450 */}
       <div className='product-card'>
         {/* h 300 */}
-        <Link to={`${_id}`} className="product-item-link">
-        <div className='img_product'>
-          <img src={img} alt={title} className='product-img' />
-        </div>
-        {/* h 120 */}
-        <div className='product_card_content'>
-          <span>{title}</span>
-          <span>price: {price}</span>
-          <span>volume: {volume} ml</span>
-        </div>
+        <Link to={`${_id}`} className='product-item-link'>
+          <div className='img_product'>
+            <img src={img} alt={title} className='product-img' />
+          </div>
+          {/* h 120 */}
+          <div className='product_card_content'>
+            <span>{title}</span>
+            <span>price: {price}</span>
+            <span>volume: {volume} ml</span>
+          </div>
         </Link>
         {/* h 30 */}
         <div className='btn_card_container'>

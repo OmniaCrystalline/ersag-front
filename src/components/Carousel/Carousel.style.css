@@ -1,0 +1,25 @@
+.car-wrapper {
+    height: 500px;
+        position: relative;
+}
+
+.a{
+    height: 500px;
+}
+
+.a img{
+    height: 100%;
+}
+
+.thumbs-wrapper{
+    display: none;
+}
+
+.abs{
+    position: absolute;
+    height: 400px;
+    z-index: 70;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+}

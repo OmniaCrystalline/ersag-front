@@ -26,6 +26,7 @@
     display: grid;
     text-align: center;
     padding: 10px;
+    gap: 10px;
 }
 
 .btn_card_container {
